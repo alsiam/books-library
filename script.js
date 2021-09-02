@@ -1,12 +1,13 @@
 // Global Variable for using multiple Times
 const errorMessage = document.getElementById('error-message');
 const totalFound = document.getElementById('total-found');
+const searchResult = document.getElementById('search-result');
 
-// 
+
+//loading spinner function
 const loadingDisplay = display => {
   document.getElementById('loading').style.display = display;
 }
-
 const searchResultDisplay = display => {
   document.getElementById('search-result').style.display = display;
 }
@@ -24,6 +25,7 @@ const loadData = () => {
     errorMessage.innerHTML = `
        <span class='d-block text-gray'>Please, Input a Valid Book Name..!</span>
        `;
+    searchResult.innerHTML = '';
 
   } else {
 
@@ -75,17 +77,19 @@ const displayData = (books) => {
   // All About Search Result 
   const minBooks = books.docs;
   console.log(minBooks);
-  const searchResult = document.getElementById('search-result');
   searchResult.innerHTML = '';
 
   minBooks.forEach(book => {
     const div = document.createElement('div');
     div.classList.add('col');
+
+    // Getting Details 
     let cover = book.cover_i;
     let title = book.title.slice(0, 10);
     let author = book.author_name;
     let publisher = book.publisher;
     let publishYear = book.first_publish_year;
+
     div.innerHTML = `
         <div class="card mb-3 shadow rounded">
         <div class="row g-0">
