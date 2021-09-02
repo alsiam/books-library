@@ -11,7 +11,7 @@ const loadData = () => {
        `;
     } else {
         // Loading data
-        const url = `http://openlibrary.org/search.json?q=${inputValue.value}`;
+        const url = `https://openlibrary.org/search.json?q=${inputValue.value}`;
         fetch(url)
             .then(res => res.json())
             .then(data => displayData(data))
